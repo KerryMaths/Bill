@@ -6,6 +6,10 @@ App written using Angular
 
 How to run app.
 
-- npm install: package.json (download the dependencies)
-- bower install: bower.json (downloads bower components)
-- Run test: karma.conf.js (runs test using Jasmine)
+- install NodeJS and NPM
+- "npm install -g bower karma” - install bower and karma globally 
+- run "npm install” in project root directory - uses package.json to download the dependencies
+- run "bower install” in project root directory - uses bower.json to download bower components
+- run  “karma start karma.conf.js” - runs tests using Karma test runner
+
+- open app/index.html in browser to view bill
