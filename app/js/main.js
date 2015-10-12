@@ -32,7 +32,6 @@ var app = angular.module('myApp', []);
 			$scope.package = data.package;
 			$scope.callCharges = data.callCharges;
 			$scope.skyStore = data.skyStore;
-            console.log(data);
 
 			//subs function;
 			$scope.substotalfn= (function(){
@@ -57,16 +56,10 @@ var app = angular.module('myApp', []);
 			//sky Store function;
 			$scope.skyStoretotalfn= (function(){
 				total = 0;
-				total2 = 0;
 				for ( i in $scope.skyStore.rentals){
 					total += $scope.skyStore.rentals[i].cost;
+					$scope.skyStore.total  = total ;
 				}
-				for ( i in $scope.skyStore.buyAndKeep){
-					total2 += $scope.skyStore.buyAndKeep[i].cost;
-					$scope.skyStore.total  = total + total2;
-
-				}
-
 			});
 
 			//total bill function;
@@ -89,8 +82,8 @@ var app = angular.module('myApp', []);
 
 		});
 
-
 }]);
+
 
 
 

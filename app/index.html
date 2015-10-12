@@ -5,27 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>View Bill</title>
     <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+     <link href="css/bill.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
     
 </head>
 <body>
-    <div ng-controller = "BillController" id="" class="container col-xs-12">
-        <div>
-            
-        <h1 class="center-block text-center">Bill & Statment</h1>
-        <h2 class="text-center">Latest Bill <small id="latestBill">{{statement.period.from | date }} - {{statement.period.to | date }}</small></h2>
+    <div ng-controller = "BillController" id="BillController">
+        <div class="title center-block text-center ">
         
-         <table class="table">
-                <thead>
-                </thead>
-                    <tbody id="statementTable" >
-                        <tr>
-                            <td><h3><small>Due Date: </small>{{statement.due |date}}</h3></td>
-			                 <td><h3><small>Total: </small><strong><big><a>{{total | currency : "&pound;" : 2}}</a></big></h3></strong></td>
-                        </tr>
-                    </tbody> 
-            </table>
+            <h1>My Bill</h1>
+            <b>Period: </b>{{statement.period.from | date }} - {{statement.period.to | date }}
+                    
+        </div>
+
+    <div id="billStatement">
+        <div class="info ">
+    
+            <b class="amountText pull-left">Amount Due: </b><b class="total">  {{total | currency : "&pound;" : 2}}</b><br />
+            <b class="pull-left">Due Date:</b> {{statement.due |date}}
+   
+         </div>
+
             
-            </div>
+            
         
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             
@@ -169,9 +171,11 @@
   </div>
     
     </div>
-        <div id="genDate"><p><b>Statement Date: {{statement.generated | date}}</p></b></div>
-        
+    <div id="genDate"><p>&nbsp;<b>Statement Date: </b>{{statement.generated | date}}</p></div>
+
+    </div>
 </div>
+    </div>
     <script src="../bower_components/angular/angular.js" ></script>
     <script src="../bower_components/jquery/dist/jquery.js" ></script>
     <script src= "../bower_components/bootstrap/dist/js/bootstrap.js" ></script>
