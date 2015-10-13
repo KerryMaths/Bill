@@ -112,7 +112,7 @@ describe('BillController', function(){
                 expect($scope.total).toEqual(136.03000000000003);
                 expect($scope.package.subscriptions[0].name).toEqual("Variety with Movies HD");
                 expect($scope.callCharges.calls.length).toEqual(28);
-                expect($scope.skyStore.total).toEqual(4.99)
+                expect($scope.skyStore.total).toEqual(24.97)
 
             });
 
@@ -138,9 +138,9 @@ describe('BillController', function(){
                 $scope.callChargestotalfn();
                 expect($scope.callCharges.total).toEqual(59.64000000000002);
 
-                $scope.skyStore.total = 89.3;
+                $scope.skyStore.total = 79.3;
                 $scope.skyStoretotalfn();
-                expect($scope.skyStore.total).toEqual(4.99)
+                expect($scope.skyStore.total).toEqual(24.97)
 
             });
         });

@@ -53,19 +53,26 @@ var app = angular.module('myApp', []);
 
 			});
 
+			var rentalTotal = 0;
+			var buyAndKeepTotal = 0;
+			for ( i in $scope.skyStore.rentals){
+				rentalTotal += $scope.skyStore.rentals[i].cost;
+			}
+
+			for ( i in $scope.skyStore.buyAndKeep){
+				buyAndKeepTotal += $scope.skyStore.buyAndKeep[i].cost;
+
+			}
+
 			//sky Store function;
 			$scope.skyStoretotalfn= (function(){
-				total = 0;
-				for ( i in $scope.skyStore.rentals){
-					total += $scope.skyStore.rentals[i].cost;
-					$scope.skyStore.total  = total ;
-				}
+				$scope.skyStore.total  = rentalTotal + buyAndKeepTotal;
 			});
 
 			//total bill function;
 			$scope.totalfn= (function(){
 				if ($scope.total !== $scope.package.total + $scope.callCharges.total + $scope.skyStore.total){
-					$scope.total = $scope.package.total + $scope.callCharges.total + $scope.skyStore.total;
+					$scope.total = $scope.package.total + $scope.callCharges.total + $scope.skyStore.total - buyAndKeepTotal;
 				}
 			});
 
