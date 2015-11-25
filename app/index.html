@@ -1,190 +1,176 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
-<head>
+<html data-ng-app="myApp">
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>View Bill</title>
     <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
-     <link href="css/bill.css" rel="stylesheet" type="text/css" />
+    <link href="css/bill.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
     
-</head>
-<body>
-    <div ng-controller = "BillController" id="BillController">
-        <div class="title center-block text-center ">
+  </head>
+  <body>
+    <div data-ng-controller = "BillController" id="BillController">
+      <div class="title center-block text-center ">
         
-            <h1>My Bill</h1>
-            <b>Period: </b>{{statement.period.from | date }} - {{statement.period.to | date }}
-                    
-        </div>
-
-    <div id="billStatement">
+        <h1>My Bill</h1>
+        <b>Period: </b>{{statement.period.from | date }} - {{statement.period.to | date }}
+        
+      </div>
+      <div id="billStatement">
         <div class="info ">
-    
-            <b class="amountText pull-left">Amount Due: </b><b class="total">  {{total | currency : "&pound;" : 2}}</b><br />
-            <b class="pull-left">Due Date: </b> {{statement.due |date}}
-   
-         </div>
-
-            
-            
+          
+          <b class="amountText pull-left">Amount Due: </b><b class="total">  {{total | currency : "&pound;" : 2}}</b><br />
+          <b class="pull-left">Due Date: </b> {{statement.due |date}}
+          
+        </div>
+        
+        
         
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            
-    <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <p role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Subscriptions
-        <span id="subsBtnTotal" class="pull-right">
-           <a> {{package.total | currency : "&pound;" : 2}}</a> &nbsp;&nbsp; 
-            <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true">
-            </span>
-        </span>
-          </p>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-        <table  class="table">
-                <thead>
+          
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <div class="panel-title">
+                <p role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Subscriptions
+                  <span id="subsBtnTotal" class="pull-right">
+                    <a> {{package.total | currency : "&pound;" : 2}}</a> &nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                  </span>
+                </p>
+              </div>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <table  class="table">
+                  <thead>
                     <tr>
-                        <th id="">Name</th>
-                        <th id="">Cost</th>
+                      <th>Name</th>
+                      <th>Cost</th>
                     </tr>
-                </thead>
-                    <tbody id="subTable"></tbody>
-                    <tr data-ng-repeat="sub in package.subscriptions">
-			          <td>{{sub.name}}</td>
-			          <td>{{sub.cost | currency : "&pound;" : 2}}</td>
-                    </tr>
-                        <tr class='alert alert-info'>
-                            <td><strong><big>Total</big></strong></td>
-			                 <td><strong><big>{{package.total | currency : "&pound;" : 2}}</big></strong></td>
-                        </tr>
-            </table>
-      </div>
-    </div>
-  </div>
+                  </thead>
+                <tbody id="subTable"></tbody>
+                <tr data-ng-repeat="sub in package.subscriptions">
+                  <td>{{sub.name}}</td>
+                  <td>{{sub.cost | currency : "&pound;" : 2}}</td>
+                </tr>
+                <tr class='alert alert-info'>
+                  <td><strong><big>Total</big></strong></td>
+                  <td><strong><big>{{package.total | currency : "&pound;" : 2}}</big></strong></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
         
         <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <p role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
-          Call Charges
-            <span id="callChargesTotal" class="pull-right">
-                <a>{{callCharges.total | currency : "&pound;" : 2}}</a> &nbsp;&nbsp; 
-            <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true">
-            </span>
-        </span>
-        </p>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-        <table  class="table">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <div class="panel-title">
+              <p role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                Call Charges
+                <span id="callChargesTotal" class="pull-right">
+                  <a>{{callCharges.total | currency : "&pound;" : 2}}</a> &nbsp;&nbsp;
+                  <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                </span>
+              </p>
+            </div>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <table  class="table">
                 <thead>
-                    <tr>
-                        <th id="">Called</th>
-                        <th id="">Duration</th>
-                        <th id="">Cost</th>
-                    </tr>
+                  <tr>
+                    <th>Called</th>
+                    <th>Duration</th>
+                    <th>Cost</th>
+                  </tr>
                 </thead>
-                    <tbody id="callChargesTable">
-                        <tr data-ng-repeat="call in callCharges.calls">
-			          <td>{{call.called}}</td>
-			          <td>{{call.duration}}</td>
-			          <td>{{call.cost | currency : "&pound;" : 2}}</td>
-                        </tr>
-                        <tr class='alert alert-info'>
-                            <td><strong><big>Total</big></strong></td>
-                            <td></td>
-			                 <td><strong><big>{{callCharges.total | currency : "&pound;" : 2}}</big></strong></td>
-                        </tr>
-                    </tbody>
-            </table>
-      </div>
-    </div>
-  </div>
-       
+                <tbody id="callChargesTable">
+                  <tr data-ng-repeat="call in callCharges.calls">
+                    <td>{{call.called}}</td>
+                    <td>{{call.duration}}</td>
+                    <td>{{call.cost | currency : "&pound;" : 2}}</td>
+                  </tr>
+                  <tr class='alert alert-info'>
+                    <td><strong><big>Total</big></strong></td>
+                    <td></td>
+                    <td><strong><big>{{callCharges.total | currency : "&pound;" : 2}}</big></strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
         <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <p role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
-          Sky Store
-            <span id="skyStoreTotal" class="pull-right">
-                <a>{{skyStore.total | currency : "&pound;" : 2}}</a> &nbsp;&nbsp; 
-            <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true">
-            </span>
-        </span>
-        </p>
-      </h4>
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-        <h4>Rentals</h4>
-            <table  class="table">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <div class="panel-title">
+              <p role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                Sky Store
+                <span id="skyStoreTotal" class="pull-right">
+                  <a>{{skyStore.total | currency : "&pound;" : 2}}</a> &nbsp;&nbsp;
+                  <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                </span>
+              </p>
+            </div>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <h4>Rentals</h4>
+              <table  class="table">
                 <thead>
-                    <tr>
-                        <th id="">Title</th>
-                        <th id="">Cost</th>
-                    </tr>
+                  <tr>
+                    <th>Title</th>
+                    <th>Cost</th>
+                  </tr>
                 </thead>
-                    <tbody id="rentalsTable">
-                        <tr data-ng-repeat="rental in skyStore.rentals">
-			             <td>{{rental.title}}</td>
-			             <td>{{rental.cost | currency : "&pound;" : 2}}</td>
-                        </tr>
-                    </tbody> 
-            </table>
-            
-            <h4>Buy and Keep</h4>
-            <table  class="table">
-                <thead>
-                    <tr>
-                        <th id="">Title</th>
-                        <th id="">Cost</th>
-                    </tr>
-                </thead>
-                    <tbody id="buyAndKeepTable">
-                        <tr data-ng-repeat="buyAndKeep in skyStore.buyAndKeep ">
-			             <td>{{buyAndKeep.title}}</td>
-			             <td>{{buyAndKeep.cost | currency : "&pound;" : 2}}</td>
-                        </tr>
-                    </tbody> 
-            </table>
-          
-          <table class="table">
-              </section>
-
-              <thead></thead>
-                    <tbody id="buyAndKeepTotalTable">
-                        <tr class='alert alert-info'>
-                            <td><strong><big>Total</big></strong></td> <td> <big></big</td>
-			                 <td><strong><big>{{skyStore.total | currency : "&pound;" : 2}}</big></strong></td>
-                        </tr>
-                    </tbody>
+                <tbody id="rentalsTable">
+                  <tr data-ng-repeat="rental in skyStore.rentals">
+                    <td>{{rental.title}}</td>
+                    <td style="padding-left: 0px">{{rental.cost | currency : "&pound;" : 2}}</td>
+                  </tr>
+                </tbody>
+              </table>
               
-            </table>
+              <h4>Buy and Keep</h4>
+              <table  class="table">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Cost</th>
+                  </tr>
+                </thead>
+                <tbody id="buyAndKeepTable">
+                  <tr data-ng-repeat="buyAndKeep in skyStore.buyAndKeep ">
+                    <td>{{buyAndKeep.title}}</td>
+                    <td>{{buyAndKeep.cost | currency : "&pound;" : 2}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              <table class="table">
+                <tbody id="buyAndKeepTotalTable">
+                  <tr class='alert alert-info'>
+                    <td><strong><big>Total</big></strong></td> <td style="padding-left: 100px"></td>
+                    <td><strong>{{skyStore.total | currency : "&pound;" : 2}}</strong></td>
+                  </tr>
+                </tbody>
+                
+              </table>
+            </div>
+          </div>
+        </div>
+        
       </div>
+      <div id="genDate"><p>&nbsp;<b>Statement Date: </b>{{statement.generated | date}}</p></div>
     </div>
   </div>
-    
-    </div>
-    <div id="genDate"><p>&nbsp;<b>Statement Date: </b>{{statement.generated | date}}</p></div>
-
-    </div>
-</div>
-    </div>
-    <script src="../bower_components/angular/angular.js" ></script>
-    <script src="../bower_components/jquery/dist/jquery.js" ></script>
-    <script src= "../bower_components/bootstrap/dist/js/bootstrap.js" ></script>
-    <script src="js/main.js" type="text/javascript" ></script>
-    <script src="js/getBillFactory.js" type="text/javascript" ></script>
-    <script src="js/statementController.js" type="text/javascript" ></script>
-
+  <script src="../bower_components/angular/angular.js" ></script>
+  <script src="../bower_components/jquery/dist/jquery.js" ></script>
+  <script src= "../bower_components/bootstrap/dist/js/bootstrap.js" ></script>
+  <script src="js/main.js" type="text/javascript" ></script>
+  <script src="js/getBillFactory.js" type="text/javascript" ></script>
+  <script src="js/statementController.js" type="text/javascript" ></script>
 </body>
-    
-    
-
 </html>
