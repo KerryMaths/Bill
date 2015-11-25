@@ -1,4 +1,4 @@
-# Bill unattended test - Sky Apps Team
+# Bill Unattended test - Sky Apps Team
 
 ## Requirements
 
@@ -7,7 +7,7 @@ You will have to request the data from the server (will be in a JSON format).
 App should display:
  - Subscription
  - Call Charges
- - sky Store
+ - Sky Store
 
 ### How to run app.
 
