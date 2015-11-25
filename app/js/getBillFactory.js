@@ -1,11 +1,11 @@
 (function () {
-	
+	'use strict';
 	function getBillJson ($http){
 
 		var statement = $http.get('https://still-scrubland-9880.herokuapp.com/bill.json')
 		.then(function(response){
 		return response.data;
-		})
+		});
 
 		return statement;
 	}

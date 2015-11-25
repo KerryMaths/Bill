@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Wed Oct 07 2015 22:32:02 GMT+0100 (BST)
+// Generated on Wed Nov 25 2015 15:14:58 GMT+0000 (GMT)
 
 module.exports = function(config) {
   config.set({
@@ -15,11 +15,11 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        'bower_components/angular/angular.js',
-        'bower_components/angular-mocks/angular-mocks.js',
-        'bower_components/angular-resource/angular-resource.js',
-        'app/**/*.js',
-        'test/**/*.js',
+      'bower_components/angular/angular.js',
+      'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/angular-resource/angular-resource.js',
+      'app/js/*.js',
+      'test/js/*.js'
     ],
 
 
@@ -37,8 +37,15 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress','html'], 
 
+    htmlReporter: {
+      outputFile: 'test/units.html',
+            
+      // Optional
+      pageTitle: 'Unit Tests',
+      subPageTitle: 'A sample project description',
+    },
 
     // web server port
     port: 9876,
@@ -61,7 +68,12 @@ module.exports = function(config) {
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome'],
 
+    plugins : [
+      'karma-chrome-launcher',
+      'karma-jasmine',
+      'karma-jasmine-html-reporter'
 
+    ],
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false
