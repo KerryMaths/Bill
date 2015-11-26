@@ -5,7 +5,7 @@ describe('Staement Controller', function(){
     var $rootScope,
         $scope,
         controller,
-        theBill;
+        getStatementFactory;
     var $httpBackend = null;
 
     beforeEach(function(){
@@ -16,7 +16,7 @@ describe('Staement Controller', function(){
         $rootScope= $injector.get('$rootScope');
         $scope = $rootScope.$new();
         controller = $injector.get('$controller')("BillController",{$scope: $scope});
-        theBill = $injector.get('getStatementFactory'); 
+        getStatementFactory = $injector.get('getStatementFactory'); 
       });  
 
     }); 

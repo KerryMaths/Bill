@@ -6,6 +6,10 @@
 
   	beforeEach(module('myApp'));
 
+  	it('should create the myApp module', function(){
+
+  	});
+
   });
   
 })(); 
