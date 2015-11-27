@@ -3,9 +3,9 @@
 	'use strict';
 	function processStatement ($scope, getStatementFactory){
 
-	     //call bill service
-	    getStatementFactory.then(function(data){
-			$scope.statement = data.statement;
+	    //call bill service
+	  getStatementFactory.then(function(data){
+  		$scope.statement = data.statement;
 			$scope.total = data.total;
 			$scope.package = data.package;
 			$scope.callCharges = data.callCharges;
